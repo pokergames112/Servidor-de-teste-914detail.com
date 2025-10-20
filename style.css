@@ -1,0 +1,943 @@
+/* VARIÁVEIS DE COR E FONTE */
+:root {
+    --roxo-principal: #ba06ec; /* Roxo para títulos e CTAs */
+    --preto-fundo: #000000;
+    --branco-texto: #ffffff;
+    --bebas: 'Bebas Neue', sans-serif;
+    --montserrat: 'Montserrat', sans-serif;
+}
+
+/* ESTILOS GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--montserrat);
+    background-color: var(--preto-fundo);
+    color: var(--branco-texto);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- TEXTO COM COR PERSONALIZADA (para 'SEU CARRO') --- */
+.text-roxo {
+    color: var(--roxo-principal);
+}
+
+
+/* --- BOTÕES (CTAs) --- */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-family: var(--montserrat);
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Botão principal (Agenda Agora Mesmo) */
+.btn-primario {
+    background-color: var(--roxo-principal);
+    color: var(--branco-texto);
+    border: none;
+}
+.btn-primario:hover {
+    background-color: #a305d1; /* Roxo um pouco mais escuro */
+}
+
+/* Botão secundário (Nossos Serviços) */
+.btn-secundario {
+    background-color: transparent;
+    color: var(--roxo-principal);
+    border: 2px solid var(--roxo-principal);
+    margin-right: 15px; /* Para separar do botão primário */
+}
+.btn-secundario:hover {
+    background-color: var(--roxo-principal);
+    color: var(--branco-texto);
+}
+
+
+/* --- CABEÇALHO / NAVBAR --- */
+.header {
+    background-color: var(--preto-fundo);
+    width: 100%;
+    /* Adicione estas propriedades para fixar o header */
+    position: fixed; 
+    top: 0;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    /* Adicione esta transição para o efeito de deslize */
+    transition: top 0.3s ease-in-out; 
+    padding: 15px 0; /* Ajuste o padding, se necessário, para o header */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha sutil para separar */
+}
+
+.header.hidden {
+    top: -100px; /* Ajuste este valor se a altura do seu header for maior que 100px */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- LOGO (IMAGEM) --- */
+.logo-img {
+    height: 70px; /* Altura corrigida */
+    width: auto;
+    background-color: transparent; 
+}
+
+/* --- ESTILOS DO DROPDOWN (SUBMENU) --- */
+
+/* Container pai (onde o botão "Mais Serviços" está) */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    /* Ajuste o gap para encaixar o menu */
+    margin: 0 5px; 
+}
+
+/* O botão que já está estilizado (btn btn-secundario) */
+.dropdown-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-family: var(--montserrat);
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    
+    /* Aplica o estilo do .btn-secundario: */
+    background-color: transparent;
+    color: var(--roxo-principal); 
+    border: 2px solid var(--roxo-principal); /* Borda sólida */
+    
+    /* Estilos específicos do botão/dropdown */
+    cursor: pointer;
+    line-height: normal; /* Garante alinhamento vertical */
+    text-align: center;
+}
+.dropdown-btn:hover {
+    background-color: var(--roxo-principal); /* Fundo roxo */
+    color: var(--branco-texto); /* Texto branco no hover */
+}
+
+
+/* O conteúdo do submenu (inicialmente escondido) */
+
+.dropdown.active .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    /* Posição no eixo X para alinhar com o botão */
+    right: 0; 
+    /* Posição no eixo Y, abaixo do botão */
+    top: 100%; 
+    background-color: var(--preto-fundo);
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    z-index: 10; /* Garante que o menu fique por cima de outros elementos */
+    border: 1px solid var(--roxo-principal);
+    border-top: none; /* Para parecer que 'continua' do botão */
+}
+
+/* Estilo dos links dentro do submenu */
+.dropdown-content a {
+    color: var(--branco-texto);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: 400;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+/* Efeito de hover nos links do submenu */
+.dropdown-content a:hover {
+    background-color: var(--roxo-principal);
+    color: var(--branco-texto);
+}
+
+/* Ação: Mostra o submenu quando o mouse está sobre o container principal */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* --- SEÇÃO HERO --- */
+.hero-section {
+    /* AQUI: Usando a imagem de fundo 'pagina 1.jpg' */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('image/Teste-fundo.webp') no-repeat center center/cover;
+    height: 100vh; /* Ocupa a altura total da tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px; /* Compensa o cabeçalho fixo */
+    min-height: 600px; /* Garante uma altura mínima no desktop */
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-family: var(--bebas);
+    font-size: 5rem;
+    color: var(--branco-texto);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Ajuste do botão dentro da seção Hero, se necessário */
+.hero-content .btn-primario {
+    font-size: 1.1rem;
+    padding: 15px 40px;
+}
+
+/* --- SEÇÃO SERVIÇOS / CARROSSEL --- */
+.servicos-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.title-section {
+    font-family: var(--bebas);
+    font-size: 3.5rem;
+    margin-bottom: 40px;
+}
+
+/* Estilo do Cartão de Serviço */
+.servico-card {
+    background-color: #1a1a1a;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: auto !important;
+}
+
+.servico-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.servico-card h3 {
+    font-family: var(--bebas);
+    font-size: 1.8rem;
+    color: var(--roxo-principal);
+    margin-bottom: 5px;
+}
+
+.servico-card p {
+    font-size: 0.9rem;
+    color: #ccc;
+    flex-grow: 1;
+    margin-bottom: 15px;
+}
+
+.btn-leia-mais {
+    display: block;
+    padding: 8px 15px;
+    background-color: var(--roxo-principal); 
+    color: var(--branco-texto);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    align-self: stretch;
+}
+
+.btn-leia-mais:hover {
+    background-color: #7a00cc;
+}
+
+.preco-card {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--branco-texto);
+    display: block;
+    margin-bottom: 15px;
+}
+
+.btn-card {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--roxo-principal);
+    color: var(--branco-texto);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-card:hover {
+    background-color: #7a00cc;
+}
+
+
+/* --- NOVA SEÇÃO: PACOTES EXCLUSIVOS --- */
+.pacotes-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+/* Estilo para a lista de itens inclusos */
+.pacote-lista {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 20px 0;
+    text-align: left;
+    width: 100%;
+    max-width: 200px; 
+    margin: 10px auto 20px auto;
+}
+
+.pacote-lista li {
+    font-size: 0.9rem;
+    color: var(--branco-texto);
+    margin-bottom: 5px;
+    padding-left: 15px;
+    position: relative;
+}
+
+/* Garante que os botões de navegação e paginação sejam únicos para este Swiper */
+.swiper-button-next.pacotes-next, 
+.swiper-button-prev.pacotes-prev {
+    color: var(--roxo-principal) !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--roxo-principal) !important;
+}
+
+/* --- ESTILOS DA SEÇÃO DE AVALIAÇÕES --- */
+.reviews-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+/* Estilo para o Destaque da Nota Máxima */
+.nota-maxima-destaque {
+    background-color: #1a1a1a; /* Fundo sutil para destacar */
+    padding: 30px;
+    border-radius: 8px;
+    margin: 40px auto;
+    max-width: 650px;
+}
+
+.nota-maxima-destaque .nota-img {
+    width: 100%; /* Garante que a imagem se ajuste ao container */
+    max-width: 1100px; /* Limita o tamanho da imagem da nota */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.nota-maxima-destaque p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--branco-texto);
+}
+
+/* Estilo do Carrossel de Reviews */
+.mySwiperReviews {
+    max-width: 1100px; /* Limita a largura do carrossel */
+    margin: 40px auto 30px auto; /* Espaçamento: 40px em cima, 60px em baixo */
+    padding-bottom: 40px; /* Espaço para as bolinhas de paginação */
+}
+
+.review-slide {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o conteúdo ao topo se o carrossel tiver altura fixa */
+    height: auto !important; /* Permite que o slide se ajuste à altura da imagem */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.review-print {
+    width: 100%; /* O print ocupa toda a largura do slide */
+    height: auto;
+    border-radius: 8px;
+    /* Pode adicionar uma sombra para o efeito de "card" */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+}
+
+
+/* Cor dos pontos de paginação (reutilizando a cor roxa) */
+.swiper-pagination-bullet-active {
+    background: var(--roxo-principal) !important;
+}
+
+/* Estilo para o botão que irá abaixo do carrossel */
+.btn-avalie {
+    margin-top: 0px;
+}
+
+/* --- SEÇÃO CTA FINAL --- */
+.cta-final-section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--roxo-principal); /* Destaque em Roxo */
+    color: var(--branco-texto);
+}
+
+.cta-final-section h2 {
+    font-family: var(--bebas);
+    font-size: 3rem;
+    margin-bottom: -15px;
+}
+
+.cta-final-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-final-section .cta-btn {
+    background-color: var(--preto-fundo); /* Botão Preto sobre o fundo Roxo */
+    border: 2px solid var(--branco-texto);
+}
+
+.cta-final-section .cta-btn:hover {
+    background-color: #1a1a1a;
+    border-color: var(--branco-texto);
+}
+
+/* --- RODAPÉ (FOOTER) --- */
+.footer-section {
+    background-color: #111111;
+    padding: 60px 0 0; /* Remove o padding de baixo, pois o copyright terá o seu */
+}
+
+/* Container para Localização e Fale Conosco (Top Row) */
+.footer-top-row {
+    display: flex;
+    justify-content: space-around; /* Distribui o espaço entre os dois blocos */
+    gap: 30px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #333; /* Linha divisória sutil */
+}
+
+.footer-item {
+    /* Garante que ocupem 50% cada, alinhados no centro */
+    flex-basis: 50%; 
+    text-align: center;
+}
+
+.footer-item h4 {
+    font-family: var(--bebas);
+    font-size: 1.5rem;
+    color: var(--roxo-principal);
+    margin-bottom: 15px;
+}
+
+.footer-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Estilo para links de contato (WhatsApp e Insta) */
+.social-link {
+    /* Centraliza os links no container de contato */
+    display: inline-flex;
+    align-items: center;
+    color: var(--branco-texto);
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 5px 15px;
+    transition: color 0.3s;
+}
+
+/* Ícones mantidos (se você os tiver adicionado) */
+.social-link .icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    
+}
+
+.social-link:hover {
+    color: var(--roxo-principal);
+}
+
+
+/* --- DIREITOS RESERVADOS (BOTTOM) --- */
+.footer-copyright {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-copyright p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+/* --- BOTÃO VOLTAR AO TOPO --- */
+#scrollToTopBtn {
+    display: none; /* Começa escondido, o JS vai mostrar */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999; /* Garante que fique acima de todos os outros elementos */
+    width: 50px;
+    height: 50px;
+    background-color: var(--roxo-principal);
+    color: var(--branco-texto);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 50px; /* Centraliza o texto/ícone verticalmente */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #a305d1; /* Roxo um pouco mais escuro */
+}
+
+/* --- ESTILO DO BOTÃO LEIA MAIS --- */
+.btn-leia-mais {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: transparent; /* Fundo transparente */
+    color: var(--roxo-principal); /* Texto roxo */
+    border: 1px solid var(--roxo-principal); /* Borda roxa sutil */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    transition: all 0.3s;
+    margin-top: 5px; /* Espaço entre o parágrafo e o botão */
+    margin-bottom: 10px; /* Espaço entre "Leia Mais" e "Preço/Agendar" */
+    cursor: pointer;
+}
+
+.btn-leia-mais:hover {
+    background-color: var(--roxo-principal);
+    color: var(--branco-texto);
+}
+
+/* --- ESTILOS DO MODAL (POP-UP) --- */
+.modal-container {
+    display: none; /* Começa escondido, o JS muda para 'flex' */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Fundo escuro transparente */
+    z-index: 2000; /* Acima de tudo */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: #1a1a1a; /* Fundo do modal mais escuro que a página */
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--roxo-principal);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal-content h3 {
+    font-family: var(--bebas);
+    font-size: 2.5rem;
+    color: var(--roxo-principal);
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+}
+
+.modal-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 10px;
+    /* Estilo para as listas de bullet points que você forneceu */
+    padding-left: 20px; 
+    position: relative;
+}
+
+.modal-content p::before {
+    content: '★'; /* Ícone de estrela como bullet point */
+    color: var(--roxo-principal);
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+    top: 4px;
+}
+
+.modal-btn-agendar {
+    margin-top: 20px;
+    width: 100%; /* Botão de agendar em largura total */
+    text-align: center;
+}
+
+/* --- ESTILOS PARA IFRAME RESPONSIVO (Google Reviews) --- */
+.reviews-iframe-container-wrapper {
+    margin: 40px auto;
+    max-width: 800px; /* Limita a largura máxima do iframe no desktop */
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.reviews-iframe-container-wrapper iframe {
+    display: block; /* Remove espaços extras */
+}
+
+/* --- ESTILOS DOS BOTÕES DE NAVEGAÇÃO DO SWIPER (SETAS) --- */
+
+/* Estilo para a cor das setas de navegação */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--roxo-principal) !important; /* Força a cor roxa definida */
+    transition: transform 0.3s ease;
+    /* Ajusta o tamanho da seta (o valor 'font-size' é usado como referência) */
+    --swiper-navigation-size: 30px; 
+}
+
+/* Efeito ao passar o mouse */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    transform: scale(1.1);
+}
+
+/* --- MEDIA QUERIES (OTIMIZAÇÃO MOBILE) --- */
+
+@media (max-width: 768px) {
+    /* Ajustes Gerais para Telas Menores que 768px (Tablets e Celulares) */
+    
+    .container {
+        padding: 0 15px; /* Reduz o padding lateral para maximizar o espaço */
+    }
+    
+    .title-section {
+        font-size: 3rem; /* Título de seção menor */
+    }
+
+    /* --- CABEÇALHO / NAVBAR --- */
+    .header {
+        padding: 10px 0; /* Padding menor no header */
+    }
+
+    .navbar {
+        /* Mantenha o flex e use space-between para separar o logo da navegação */
+        flex-direction: row; /* Volta a ser em linha */
+        justify-content: space-between; /* Separa o logo da navegação */
+        align-items: center; /* Alinha verticalmente */
+        gap: 0; /* Remove o gap desnecessário */
+        width: 100%; /* Garante que ocupe a largura total */
+    }
+
+    .logo-img {
+        height: 45px; /* Ajuste para mobile */
+    }
+    
+    /* Centraliza a navegação e ajusta o espaçamento dos botões */
+    nav {
+        display: flex;
+        justify-content: flex-end; /* Mantém os botões à direita */
+        width: auto; /* Permite que ocupe apenas o espaço necessário */
+        gap: 5px; /* Adiciona um pequeno espaçamento entre os botões */
+    }
+    
+    .btn {
+        padding: 8px 10px; /* **DIMINUI OS BOTÕES** para que caibam na mesma linha */
+        font-size: 0.8rem; /* Fonte menor */
+        white-space: nowrap; /* Impede quebras de linha no texto do botão */
+    }
+    
+    .btn-secundario {
+        margin-right: 0; /* Remove a margem antiga */
+    }
+
+    .dropdown {
+        /* Permite que o dropdown ocupe sua própria linha de navegação se necessário */
+        width: auto; 
+        margin: 0;
+    }
+
+    /* Ocultamos o hover para exibir o menu apenas por clique (melhor para touch) */
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }
+    
+    /* Faz o menu expandir para o lado */
+    .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: auto;
+        min-width: 200px;
+        z-index: 100;
+    }
+
+    /* --- CORREÇÃO CRUCIAL PARA MOBILE: MOSTRAR NO CLIQUE --- */
+    .dropdown.active .dropdown-content {
+        display: block; 
+    }
+    /* -------------------------------------------------------- */
+    
+    /* --- SEÇÃO HERO --- */
+    .hero-section {
+        /* Ajuste este padding para compensar a nova altura do header.
+            Como o header está mais compacto (cerca de 80px), este valor deve ser suficiente. */
+        padding-top: 90px; 
+        height: 70vh; /* Altura um pouco menor para mostrar o próximo conteúdo */
+        min-height: 500px; /* Garante que a seção não fique muito pequena */
+    }
+
+    .hero-content h1 {
+        font-size: 3rem; /* Título principal menor */
+    }
+
+    .hero-content p {
+        font-size: 1rem; /* Parágrafo menor e mais fácil de ler */
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+
+    .hero-content .btn-primario {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+
+    /* --- SERVIÇOS / PACOTES --- */
+    .servicos-section, .pacotes-section {
+        padding: 60px 0; /* Reduz o padding vertical */
+    }
+    
+    .servico-card {
+        padding: 12px;
+    }
+    
+    .servico-card h3 {
+        font-size: 1.5rem; /* Título do card menor */
+    }
+    
+    .preco-card {
+        font-size: 1.3rem;
+    }
+    
+    /* --- AVALIAÇÕES --- */
+    .nota-maxima-destaque {
+        padding: 20px;
+        margin: 30px auto;
+    }
+
+    .nota-maxima-destaque p {
+        font-size: 1rem;
+    }
+    
+    /* Otimização dos prints de avaliação */
+    .mySwiperReviews {
+        padding-bottom: 30px; 
+    }
+    
+    .review-print {
+        max-width: 100%; /* Garante que a imagem ocupe o máximo de espaço do slide */
+    }
+
+    /* --- CTA FINAL --- */
+    .cta-final-section {
+        padding: 60px 0;
+    }
+    
+    .cta-final-section h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-final-section p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    /* --- RODAPÉ --- */
+    .footer-section {
+        padding-top: 40px;
+    }
+    
+    .footer-top-row {
+        flex-direction: column; 
+        gap: 40px;
+        padding-bottom: 30px;
+    }
+    
+    .footer-item {
+        /* Garante que ocupe a largura total no mobile e o texto continue centralizado */
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    /* Garante que os links de contato continuem centralizados */
+    .social-link {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 8px 0; /* Ajusta a margem para empilhar se necessário */
+
+    }
+    
+    .footer-copyright {
+        padding: 15px 0;
+    }
+    
+    #scrollToTopBtn {
+        width: 40px;
+        height: 40px;
+        bottom: 50px;
+        right: 50px;
+        font-size: 20px;
+        line-height: 40px;
+    }
+    .modal-content {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .modal-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .modal-content p {
+        font-size: 1rem;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        /* Diminui o tamanho das setas no mobile */
+        --swiper-navigation-size: 20px; 
+        
+        /* Afasta um pouco das bordas (ajuste se necessário) */
+        top: 50%;
+        margin-top: -10px;
+        transform: translateY(-50%);
+    }
+    
+}
+
+/* NOVO: Ajustes para telas muito pequenas (ex: 320px - 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px; /* Padding mínimo */
+    }
+    
+    /* --- CABEÇALHO / NAVBAR --- */
+    nav {
+        gap: 3px; /* Espaço mínimo entre os botões */
+    }
+    
+    .btn {
+        padding: 7px 8px; /* Botões ainda menores */
+        font-size: 0.75rem; 
+    }
+    
+    .logo-img {
+        height: 40px;
+    }
+
+    .dropdown {
+            margin: 0;
+        }
+        .dropdown-btn {
+            padding: 7px 8px; /* Mantém o tamanho pequeno */
+        }
+    
+    /* --- SEÇÃO HERO --- */
+    .hero-section {
+        padding-top: 80px; 
+        height: auto; 
+        min-height: 450px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* Título principal bem menor */
+    }
+
+    .hero-content p {
+        font-size: 0.9rem; 
+    }
+    
+    .hero-content .btn-primario {
+        font-size: 0.9rem;
+        padding: 10px 25px;
+    }
+    
+    .title-section {
+        font-size: 2.5rem;
+    }
+
+    /* Otimização da nota máxima no mobile estreito */
+    .nota-maxima-destaque {
+        margin: 20px 0; 
+        padding: 15px;
+    }
+
+    /* Certifica-se de que o mySwiperReviews tem apenas 1 slide visível no mobile estreito (já configurado no JS) */
+    
+    .modal-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .modal-content p {
+        font-size: 0.95rem;
+    }
+}

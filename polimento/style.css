@@ -1,0 +1,452 @@
+/* --- 1. DEFINIÇÃO DE VARIÁVEIS DE CORES E FONTES --- */
+:root {
+    --roxo-principal: #a305d1;
+    --cor-fundo-principal: #000000; /* Fundo Preto */
+    --cor-fundo-secundario: #000000; /* Para Header/Footer/Elementos escuros */
+    --cor-texto-principal: #ffffff; /* Texto Branco */
+    --cor-texto-claro: #cccccc;
+    --bebas: 'Bebas Neue', sans-serif;
+    --montserrat: 'Montserrat', sans-serif;
+}
+
+/* --- 2. ESTILOS GLOBAIS E CENTRALIZAÇÃO --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--cor-fundo-principal); /* Fundo Preto */
+    color: var(--cor-texto-principal); /* Texto Branco */
+    font-family: var(--montserrat);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Centralização do Conteúdo */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza o bloco na tela */
+    padding: 0 20px; 
+}
+
+/* --- 3. TIPOGRAFIA E TÍTULOS --- */
+h1, h2, h3 {
+    font-family: var(--bebas);
+    color: var(--cor-texto-principal);
+}
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+.title-section {
+    font-size: 3.5rem;
+    margin-bottom: 40px;
+}
+.title-section-sub {
+    font-size: 2.2rem;
+    font-family: var(--bebas);
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--roxo-principal);
+}
+.text-roxo {
+    color: var(--roxo-principal);
+}
+
+/* --- 4. HEADER/NAVBAR --- */
+.header {
+    background-color: var(--cor-fundo-secundario);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+    /* Adiciona transição para o efeito de aparecer/sumir */
+    transition: top 0.3s ease-in-out; 
+}
+
+/* Nova classe para esconder o header */
+.header.hide {
+    top: -100px; /* Valor para garantir que o header completo saia da tela */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* **Essencial: Alinha a logo e os botões verticalmente** */
+    padding: 15px 20px;
+}
+
+.logo-img {
+    height: 50px;
+}
+
+/* Botões da Navbar */
+.btn {
+    text-decoration: none;
+    padding: 8px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.btn-primario {
+    background-color: var(--roxo-principal);
+    color: var(--cor-texto-principal);
+    border: 1px solid var(--roxo-principal);
+}
+
+.btn-secundario {
+    color: var(--roxo-principal);
+    border: 1px solid var(--roxo-principal);
+    background-color: transparent;
+}
+
+.btn-secundario:hover {
+    background-color: var(--roxo-principal);
+    color: var(--cor-texto-principal);
+}
+
+.btn-primario:hover {
+    opacity: 0.9;
+}
+
+.btn-cta-grande {
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* --- 5. CONTEÚDO DA PÁGINA INTERNA --- */
+.page-internal-content {
+    padding-top: 120px; 
+    padding-bottom: 80px;
+}
+
+/* Container do Vídeo Responsivo (16:9) */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+.video-container video, 
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- 6. GALERIA --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* --- 7. TABELA DE COMPARAÇÃO (Dark Mode) --- */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    font-size: 0.95em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.comparison-table th, .comparison-table td {
+    padding: 12px 15px;
+    text-align: left;
+    background-color: #0d0d0d; /* Fundo escuro para células */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--cor-texto-principal);
+}
+.comparison-table th {
+    background-color: var(--roxo-principal);
+    color: var(--cor-texto-principal);
+    font-family: var(--bebas);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+/* Otimização da Tabela para Mobile (Agora funciona de verdade no formato "cartões" empilhados) */
+@media (max-width: 600px) {
+    /* **CORREÇÃO:** Removemos as propriedades de rolagem horizontal que conflitavam com o empilhamento vertical. */
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 30px 0;
+        font-size: 0.95em;
+        border: none; /* Retira a borda principal para usar a borda do TR */
+    }
+    
+    .comparison-table thead {
+        /* Esconde o cabeçalho original em mobile */
+        display: none;
+    }
+    /* Cada linha (TR) vira um "cartão" de comparação, empilhando verticalmente. */
+    .comparison-table tr {
+        margin-bottom: 15px;
+        border: 1px solid var(--roxo-principal); /* Borda roxa para destacar o cartão */
+        display: block; /* Essencial para o empilhamento */
+    }
+    /* Define a célula (TD) como um bloco, usando a técnica de 'rótulo-e-valor' */
+    .comparison-table td {
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        padding-left: 50%; /* Espaço para o rótulo da coluna */
+        text-align: right;
+        display: block; /* Essencial para o empilhamento */
+    }
+    /* Estilo específico para a primeira célula (Aspecto), que deve agir como título da seção */
+    .comparison-table tr td:first-child {
+        background-color: var(--roxo-principal);
+        color: var(--cor-texto-principal);
+        font-weight: bold;
+        font-size: 1.1em;
+        text-align: center;
+        padding: 15px 10px;
+    }
+    
+    .comparison-table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+        color: var(--roxo-principal);
+    }
+    /* Remove o rótulo duplicado na célula Aspecto (porque ela já é o título) */
+    .comparison-table tr td:first-child::before {
+        content: none;
+    }
+}
+
+
+/* --- 8. FOOTER --- */
+.footer {
+    background-color: var(--cor-fundo-secundario); /* Fundo escuro */
+    color: var(--cor-texto-claro);
+    padding: 40px 0 20px 0;
+}
+
+.footer-grid {
+    display: grid;
+    /* DESKTOP FIX: 3 colunas de largura igual para distribuição clara */
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 30px;
+    margin-bottom: 20px;
+    /* DESKTOP FIX: Alinhamento padrão à esquerda (mais profissional) */
+    text-align: left; 
+}
+.footer-section {
+    padding: 10px;
+}
+.footer h3 {
+    color: var(--roxo-principal);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+.footer a {
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer a:hover {
+    color: var(--roxo-principal);
+}
+.logo-img-footer {
+    height: 40px;
+    margin-bottom: 10px;
+}
+.footer-copyright {
+    grid-column: 1 / -1;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+.social-icons .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+/* Alinhamento ajustado para o desktop (sem padding lateral desnecessário) */
+.social-link {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left; 
+    padding-left: 0; 
+}
+
+
+/* --- 9. BOTÕES FIXOS (Scroll to Top / Voltar) --- */
+
+/* Posiciona os botões (Mobile First: coluna, à direita) */
+.fixed-actions {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex; 
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.action-btn {
+    background-color: var(--roxo-principal);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    transition: opacity 0.5s, background-color 0.3s, transform 0.3s;
+    text-decoration: none;
+    opacity: 0; /* Inicia escondido */
+    pointer-events: none; /* Impede clique enquanto invisível */
+}
+
+.action-btn:hover {
+    background-color: #a305d1; /* Tom mais escuro no hover */
+    transform: scale(1.05);
+}
+
+/* Estado visível, ativado pelo JavaScript */
+.action-btn.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+/* --- 10. MEDIA QUERIES (Responsividade) --- */
+
+@media (max-width: 768px) {
+    /* 1. Torna o navbar mais compacto para caber na linha */
+    .navbar {
+        flex-direction: row; 
+        justify-content: space-between; 
+        align-items: center; 
+        padding: 8px 15px; /* Reduz o padding vertical do navbar */
+    }
+
+    /* Diminui a altura da logo para ganhar espaço */
+    .logo-img {
+        height: 40px; 
+    }
+    
+    .navbar nav {
+        margin-top: 0; 
+        display: flex; 
+        /* O flex-wrap permite a quebra, mas os ajustes abaixo vão tentar evitar */
+        flex-wrap: wrap; 
+        justify-content: flex-end;
+        /* Garante que a nav utilize o máximo de espaço restante */
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+
+    /* Torna os botões mais compactos e a fonte menor */
+    .btn {
+        padding: 5px 8px; /* Padding interno reduzido */
+        font-size: 0.7rem; /* Fonte menor para caber mais palavras */
+        margin-left: 3px; /* Margem entre botões mínima */
+        margin-right: 0;
+        margin-top: 2px; 
+        margin-bottom: 2px;
+        /* Impede que o texto quebre dentro do botão */
+        white-space: nowrap; 
+    }
+    
+    /* Corrige o Overlap do Conteúdo */
+    .page-internal-content {
+        /* Mantém o padding seguro de 110px para compensar a barra fixa */
+        padding-top: 110px; 
+        padding-bottom: 80px;
+    }
+
+    .title-section {
+        font-size: 3rem;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    /* FOOTER MOBILE FIX: Volta para 1 coluna e centraliza */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .social-link {
+        text-align: center;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Reduz o padding para ganhar mais espaço vertical */
+    .page-internal-content {
+        padding-bottom: 50px;
+    }
+
+    /* Reduz o tamanho da fonte dos títulos para caber melhor */
+    .title-section {
+        font-size: 2.5rem;
+    }
+    .title-section-sub {
+        font-size: 1.8rem;
+    }
+
+    /* Reduz o tamanho dos botões fixos */
+    .action-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+    
+    /* Na tela pequena, alinha à direita e empilha melhor */
+    .fixed-actions {
+        bottom: 15px;
+        right: 15px;
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* Desktop: Coloca os botões lado a lado no container fixo */
+@media (min-width: 768px) {
+    .fixed-actions {
+        flex-direction: row; 
+        right: 30px;
+        bottom: 30px;
+    }
+}
