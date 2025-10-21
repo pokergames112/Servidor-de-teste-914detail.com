@@ -1,5 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // --- LÓGICA DO MENU HAMBÚRGUER (NOVO) ---
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const menuMobile = document.querySelector('.menu-mobile');
+    
+    hamburgerBtn.addEventListener('click', () => {
+        // Alterna a classe 'active' para exibir/ocultar o menu
+        menuMobile.classList.toggle('active');
+        // Alterna uma classe para o próprio botão (para animação do X no CSS)
+        hamburgerBtn.classList.toggle('is-open'); 
+
+        // Opcional: Se o menu for fechado, garante que o dropdown aninhado também feche
+        if (!menuMobile.classList.contains('active')) {
+             document.querySelector('.dropdown').classList.remove('active');
+        }
+    });
+    
+    // Opcional: Fechar o menu mobile ao clicar em um link interno
+    const menuLinks = document.querySelectorAll('.menu-mobile a[href^="#"]');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Garante que o menu feche após a seleção
+            menuMobile.classList.remove('active');
+            hamburgerBtn.classList.remove('is-open');
+        });
+    });
+    
+    // --- LÓGICA DO DROPDOWN PARA MOBILE (TOQUE) (MELHORIA) ---
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownBtn = document.querySelector('.dropdown-btn');
+    
+    dropdownBtn.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        dropdown.classList.toggle('active');
+    });
+
+
     // --- LÓGICA DE ROLAGEM SUAVE E LINKS INTERNOS ---
     const links = document.querySelectorAll('a[href^="#"]');
 
@@ -186,14 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalClose = document.getElementById('modal-close');
     const modalTitle = document.getElementById('modal-title');
     const modalDescription = document.getElementById('modal-description');
-    const modalWhatsappLink = document.getElementById('modal-whatsapp-link');
-    const leiaMaisButtons = document.querySelectorAll('.btn-leia-mais');
+    const modalWhatsappLink = document.getElementById('modal-whatsapp-link'); // Mantendo a referência
 
     // Função para abrir o modal
     const openModal = (titulo, descricao) => {
         modalTitle.innerHTML = titulo;
         modalDescription.innerHTML = descricao;
-        // O link do WhatsApp já está no HTML (o botão "AGENDAR" dentro do modal)
         modalContainer.style.display = 'flex'; 
         document.body.style.overflow = 'hidden'; // Bloqueia a rolagem do body
     };
@@ -205,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // 1. Adicionar evento de clique para todos os botões "Leia Mais"
+    const leiaMaisButtons = document.querySelectorAll('.btn-leia-mais');
     leiaMaisButtons.forEach(button => {
         button.addEventListener('click', () => {
             const titulo = button.getAttribute('data-titulo');
@@ -230,34 +265,4 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
-
-    // --- LÓGICA DO DROPDOWN PARA MOBILE (TOQUE) ---
-    const dropdown = document.querySelector('.dropdown');
-    const dropdownBtn = document.querySelector('.dropdown-btn');
-
-    if (dropdown && dropdownBtn) {
-        dropdownBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Impede a ação padrão do botão
-            
-            // Alterna a classe 'active' para mostrar/esconder o menu
-            dropdown.classList.toggle('active');
-            
-            // Se o menu estiver visível, fecha ao clicar fora
-            if (dropdown.classList.contains('active')) {
-                document.addEventListener('click', closeDropdownOutside);
-            } else {
-                document.removeEventListener('click', closeDropdownOutside);
-            }
-        });
-
-        const closeDropdownOutside = (e) => {
-            // Verifica se o clique não foi no dropdown e nem dentro dele
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-                document.removeEventListener('click', closeDropdownOutside);
-            }
-        };
-    }
-    // FIM DA LÓGICA DO DROPDOWN
-
 });

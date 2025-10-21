@@ -90,6 +90,12 @@ body {
     align-items: center;
 }
 
+nav {
+    display: flex;
+    align-items: center; /* Alinha todos os itens (menu, whatsapp, hambúrguer) verticalmente */
+    gap: 15px; /* Espaço entre os elementos de navegação */
+}
+
 /* --- LOGO (IMAGEM) --- */
 .logo-img {
     height: 70px; /* Altura corrigida */
@@ -660,6 +666,43 @@ body {
     transform: scale(1.1);
 }
 
+/* --- BOTÃO HAMBÚRGUER (SEMPRE OCULTO NO DESKTOP) --- */
+.hamburger-btn {
+    display: none; /* Oculto por padrão (Desktop) */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Fica acima do menu */
+}
+
+.hamburger-btn .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--roxo-principal);
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* --- AJUSTE O MENU MOBILE PARA DESKTOP --- */
+/* Garante que o menu mobile esteja em linha no Desktop */
+.menu-mobile {
+    display: flex; 
+    align-items: center;
+    gap: 15px; /* Espaçamento entre os botões */
+}
+
+/* Oculta o dropdown no DESKTOP quando o hover não estiver ativo, mas é melhor para mobile */
+.menu-mobile .dropdown {
+    /* Mantém o estilo que já está no seu CSS para desktop */
+}
+
+.whatsapp-btn {
+    display: block; /* Garante que o WhatsApp esteja sempre visível no desktop */
+}
+
 /* --- MEDIA QUERIES (OTIMIZAÇÃO MOBILE) --- */
 
 @media (max-width: 768px) {
@@ -870,6 +913,74 @@ body {
         top: 50%;
         margin-top: -10px;
         transform: translateY(-50%);
+    }
+
+    /* MOSTRA O BOTÃO HAMBÚRGUER E OCULTA O MENU POR PADRÃO */
+    .hamburger-btn {
+        display: block; /* Mostra no Mobile */
+        order: 2; /* Coloca o hambúrguer logo após o logo, se necessário, mas antes do WhatsApp */
+        margin-right: 0;
+    }
+
+    /* Oculta os itens de navegação (exceto WhatsApp) por padrão no mobile */
+    .menu-mobile {
+        display: none; /* **OCULTA o menu completo por padrão no mobile** */
+        flex-direction: column;
+        position: absolute;
+        top: 75px; 
+        right: 0;
+        width: 100%;
+        background-color: var(--preto-fundo);
+        border-top: 1px solid var(--roxo-principal);
+        z-index: 999;
+        padding: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        align-items: flex-start;
+        /* Adicionado para garantir o alinhamento correto dos itens */
+        gap: 0; 
+    }
+
+    /* Classe para mostrar o menu quando o botão for clicado */
+    .menu-mobile.active {
+        display: flex;
+    }
+    
+    /* Estilo dos links dentro do menu mobile */
+    .menu-mobile a.btn {
+        margin: 10px 0; /* Espaçamento vertical */
+        width: 100%; /* Ocupa a largura total */
+        text-align: left;
+    }
+
+    /* Ajuste para o Dropdown dentro do Menu Mobile */
+    .menu-mobile .dropdown {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .menu-mobile .dropdown-btn {
+        width: 100%;
+        text-align: left;
+    }
+    .menu-mobile .dropdown-content {
+        position: static; /* Ocupa o fluxo normal para abrir abaixo */
+        width: 100%;
+        border-top: 1px solid var(--roxo-principal);
+    }
+    .menu-mobile .dropdown-content a {
+        padding-left: 50px; /* Recuo para subitens */
+    }
+
+    /* Oculta os botões originais no mobile, para que apenas o hambúrguer e o WhatsApp apareçam */
+    nav .btn-secundario {
+        /* Se você já tem a classe .menu-mobile, não precisa mais disso,
+           mas se sobrar algum elemento, use: display: none; */
+    }
+    
+    /* Coloca o botão WhatsApp na posição mais à direita */
+    .whatsapp-btn {
+        order: 1; /* Garante que fique depois do hambúrguer (ou o último elemento visível) */
+        margin-left: auto; /* Empurra para a direita */
+        margin-right: 25px;
     }
     
 }
