@@ -55,14 +55,16 @@ body {
 
 /* Botão secundário (Nossos Serviços) */
 .btn-secundario {
-    background-color: transparent;
-    color: var(--roxo-principal);
-    border: 2px solid var(--roxo-principal);
-    margin-right: 15px; /* Para separar do botão primário */
+    /* CORRIGIDO: Cor do texto (letra) para branco */
+    color: var(--cor-texto-principal); 
+    border: 1px solid var(--roxo-principal);
+    background-color: transparent; /* Mantém o fundo transparente */
 }
+
 .btn-secundario:hover {
+    /* Manteve a lógica de hover original, mas com o texto branco */
     background-color: var(--roxo-principal);
-    color: var(--branco-texto);
+    color: var(--cor-texto-principal);
 }
 
 
@@ -122,14 +124,14 @@ nav {
     border-radius: 5px;
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
     
-    /* Aplica o estilo do .btn-secundario: */
-    background-color: transparent;
-    color: var(--roxo-principal); 
-    border: 2px solid var(--roxo-principal); /* Borda sólida */
+    /* Garante que ele herde corretamente as cores do .btn-secundario */
+    /* Removido: background-color: transparent; */
+    color: var(--branco-texto); /* <--- AJUSTADO PARA BRANCO */
+    border: 1px solid var(--roxo-principal); /* <--- AJUSTADO PARA 1PX */
     
     /* Estilos específicos do botão/dropdown */
     cursor: pointer;
-    line-height: normal; /* Garante alinhamento vertical */
+    line-height: normal;
     text-align: center;
 }
 .dropdown-btn:hover {
