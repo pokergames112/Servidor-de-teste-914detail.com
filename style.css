@@ -45,12 +45,12 @@ body {
 
 /* Botão principal (Agenda Agora Mesmo) */
 .btn-primario {
-    background-color: var(--roxo-principal);
+    background-color:#a305d1;
     color: var(--branco-texto);
     border: none;
 }
 .btn-primario:hover {
-    background-color: #a305d1; /* Roxo um pouco mais escuro */
+    background-color: #505050; /* Roxo um pouco mais escuro */
 }
 
 /* Botão secundário (Nossos Serviços) */
