@@ -1,0 +1,648 @@
+/* --- 1. DEFINIÇÃO DE VARIÁVEIS DE CORES E FONTES --- */
+:root {
+    --roxo-principal: #a305d1;
+    --cor-fundo-principal: #000000; /* Fundo Preto */
+    --cor-fundo-secundario: #000000; /* Para Header/Footer/Elementos escuros */
+    --cor-texto-principal: #ffffff; /* Texto Branco */
+    --cor-texto-claro: #cccccc;
+    --bebas: 'Bebas Neue', sans-serif;
+    --montserrat: 'Montserrat', sans-serif;
+}
+
+/* --- 2. ESTILOS GLOBAIS E CENTRALIZAÇÃO --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--cor-fundo-principal); /* Fundo Preto */
+    color: var(--cor-texto-principal); /* Texto Branco */
+    font-family: var(--montserrat);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Centralização do Conteúdo - Padrão Desktop */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza o bloco na tela */
+    /* PADRÃO DESKTOP: Espaçamento lateral de 20px */
+    padding: 0 20px; 
+}
+
+/* --- 3. TIPOGRAFIA E TÍTULOS --- */
+h1, h2, h3 {
+    font-family: var(--montserrat); /* ALTERADO: Sai Bebas Neue (All Caps) */
+    font-weight: 700; /* NOVO: Adiciona negrito para destaque */
+    color: var(--cor-texto-principal);
+    text-transform: none; /* NOVO: Garante que a caixa alta seja removida */
+    /* NOVO: Centraliza todos os títulos */
+    text-align: center;
+}
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+.title-section {
+    font-size: 1rem;
+    margin-bottom: 40px;
+}
+/* Altera o H2 SUB-TÍTULO */
+.title-section-sub {
+    font-size: 1.5rem;
+    font-family: var(--montserrat); /* ALTERADO: Sai Bebas Neue (All Caps) */
+    font-weight: 600; /* NOVO: Adiciona negrito para destaque */
+    text-align: center;
+    margin-bottom: 30px;
+    /* CORRIGIDO: Cor do sub-título de realce para Branco */
+    color: var(--cor-texto-principal);
+    text-transform: none; /* NOVO: Garante que a caixa alta seja removida */
+}
+/* CORRIGIDO: Muda a cor de realce do texto (class="text-roxo") para Branco */
+.text-roxo {
+    color: var(--cor-texto-principal);
+}
+
+/* --- 4. HEADER/NAVBAR (BASE DE ESTILOS) --- */
+.header {
+    background-color: var(--cor-fundo-secundario);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+    /* Adiciona transição para o efeito de aparecer/sumir */
+    transition: top 0.3s ease-in-out; 
+}
+
+/* Nova classe para esconder o header */
+.header.hide {
+    top: -100px; /* Valor para garantir que o header completo saia da tela */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* **Essencial: Alinha a logo e os botões verticalmente** */
+    padding: 15px 20px;
+}
+
+.logo-img {
+    height: 50px;
+}
+
+/* Botões da Navbar */
+.btn {
+    text-decoration: none;
+    padding: 8px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    /* CORRIGIDO: Remove a caixa alta */
+    text-transform: none;
+    font-weight: 600;
+}
+
+.btn-primario {
+    background-color: var(--roxo-principal);
+    color: var(--cor-texto-principal);
+    border: 1px solid var(--roxo-principal);
+}
+
+.btn-secundario {
+    /* CORRIGIDO: Cor do texto (letra) para branco */
+    color: var(--cor-texto-principal); 
+    border: 1px solid var(--roxo-principal);
+    background-color: transparent; /* Mantém o fundo transparente */
+}
+
+.btn-secundario:hover {
+    /* Manteve a lógica de hover original, mas com o texto branco */
+    background-color: var(--roxo-principal);
+    color: var(--cor-texto-principal);
+}
+
+.btn-primario:hover {
+    opacity: 0.9;
+}
+
+/* BOTÃO CTA GRANDE (TAMANHO AJUSTADO) */
+.btn-cta-grande {
+    font-size: 1.25rem; 
+    padding: 12px 25px; 
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* --- 5. CONTEÚDO DA PÁGINA INTERNA --- */
+.page-internal-content {
+    padding-top: 120px; 
+    padding-bottom: 80px;
+    /* NOVO: Centraliza o texto da página interna (será sobrescrito em desktop) */
+    text-align: center;
+}
+
+/* Container do Vídeo Responsivo (16:9) */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+.video-container video, 
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- 6. GALERIA --- */
+.gallery-grid {
+    display: grid;
+    /* Padrão Mobile First (1 coluna) - será alterado no Desktop */
+    grid-template-columns: 1fr; 
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    object-fit: cover;
+}
+
+/* --- 7. TABELA DE COMPARAÇÃO (Dark Mode - Estilos Base) --- */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    font-size: 0.95em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+.comparison-table th, .comparison-table td {
+    padding: 12px 15px;
+    text-align: left;
+    background-color: #0d0d0d; /* Fundo escuro para células */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--cor-texto-principal);
+}
+.comparison-table th {
+    background-color: #585858;
+    color: var(--cor-texto-principal);
+    font-family: var(--montserrat); /* ALTERADO: Sai Bebas Neue (All Caps) */
+    text-transform: none; /* REMOVIDO: Era uppercase */
+    font-weight: 700; /* NOVO: Adiciona negrito para destaque */
+    font-size: 1.1rem;
+}
+
+#beneficios {
+    /* O valor de 60px é um bom ponto de partida para separar visualmente */
+    margin-top: 60px; 
+    margin-bottom: 40px; /* Mantendo o espaçamento inferior que você já tinha */
+}
+
+/* Adicione esta regra no seu style.css */
+#beneficios h2 {
+    margin-top: 40px; /* Adiciona espaçamento acima do título */
+    margin-bottom: 20px; /* Adiciona espaçamento abaixo do título, se necessário */
+    text-align: center; /* Mantém a centralização que você solicitou antes */
+}
+
+#beneficios ul {
+    /* Centraliza o bloco da lista (UL) no container */
+    list-style-position: inside; /* Opcional: Traz os bullets para dentro do UL */
+    text-align: left; /* Garante que os LIs fiquem alinhados à esquerda dentro do UL */
+    display: inline-block; /* Faz com que o UL se comporte como um bloco com largura ajustada ao conteúdo */
+}
+
+/* Adicione esta regra ao seu style.css */
+#cta-agendamento {
+    text-align: center; /* Centraliza o botão e o parágrafo */
+    padding: 20px 0; /* Recria o padding inline que existia */
+}
+
+#cta-agendamento p {
+    /* Garante que o texto do parágrafo, mesmo com o margin-top inline, seja centralizado */
+    text-align: center;
+    /* Opcional, mas útil: Reseta possíveis margens laterais que poderiam empurrá-lo */
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+/* --- ESTILOS PADRÃO MOBILE/BASE (ELEMENTOS ESCONDIDOS) --- */
+
+/* Esconde o menu desktop por padrão (Mobile First) */
+.menu-desktop {
+    display: none; 
+}
+
+/* Estilo do botão hambúrguer (Visível por padrão no Mobile First) */
+.hamburger-btn {
+    display: block; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 20; 
+}
+
+.hamburger-btn .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--roxo-principal);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animação do X (Estado ativo/aberto) */
+.hamburger-btn.is-open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-btn.is-open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.is-open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Estilo do Menu Mobile (Escondido por padrão no Mobile First) */
+.menu-mobile {
+    position: fixed;
+    top: 70px; 
+    left: 0;
+    width: 100%;
+    height: calc(100% - 70px);
+    background-color: var(--cor-fundo-secundario);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%); /* Esconde fora da tela por padrão */
+    z-index: 15;
+    overflow-y: auto; 
+}
+
+.menu-mobile.active {
+    transform: translateX(0); /* Move para a tela quando ativo */
+}
+
+.menu-mobile a {
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.1rem;
+    text-transform: none; 
+    text-align: center;
+}
+
+.menu-mobile a:last-child {
+    border-bottom: none;
+    margin-top: 20px;
+}
+
+/* --- 8. FOOTER (Estilos Base/Desktop) --- */
+.footer {
+    background-color: var(--cor-fundo-secundario); 
+    color: var(--cor-texto-claro);
+    padding: 40px 0 20px 0;
+}
+
+.footer-grid {
+    display: grid;
+    /* DESKTOP FIX: 3 colunas de largura igual para distribuição clara */
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 30px;
+    margin-bottom: 20px;
+    /* DESKTOP FIX: Alinhamento padrão à esquerda (mais profissional) */
+    text-align: left; 
+}
+.footer-section {
+    padding: 10px;
+}
+/* CORRIGIDO: Muda os títulos do footer para branco */
+.footer h3 {
+    color: var(--cor-texto-principal);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+.footer a {
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+/* CORRIGIDO: Mantém o hover roxo para dar destaque */
+.footer a:hover {
+    color: var(--roxo-principal);
+}
+.logo-img-footer {
+    height: 40px;
+    margin-bottom: 10px;
+}
+.footer-copyright {
+    grid-column: 1 / -1;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+.social-icons .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+/* Alinhamento ajustado para o desktop (sem padding lateral desnecessário) */
+.social-link {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left; 
+    padding-left: 0; 
+}
+
+
+/* --- 9. BOTÕES FIXOS (Scroll to Top / Voltar) --- */
+
+/* Posiciona os botões (Mobile First: coluna, à direita) */
+.fixed-actions {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex; 
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.action-btn {
+    background-color: var(--roxo-principal);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    transition: opacity 0.5s, background-color 0.3s, transform 0.3s;
+    text-decoration: none;
+    opacity: 0; /* Inicia escondido */
+    pointer-events: none; /* Impede clique enquanto invisível */
+}
+
+.action-btn:hover {
+    background-color: #a305d1; /* Tom mais escuro no hover */
+    transform: scale(1.05);
+}
+
+/* Estado visível, ativado pelo JavaScript */
+.action-btn.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+/* ---------------------------------------------------- */
+/* --- 10. MEDIA QUERIES (DESKTOP) --- */
+/* ---------------------------------------------------- */
+@media (min-width: 769px) {
+    /* Galeria (Desktop: 3 colunas) */
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    /* Navbar e Menu (Desktop) */
+    /* Esconde o hambúrguer e mostra o menu desktop */
+    .hamburger-btn {
+        display: none;
+    }
+
+    .menu-desktop {
+        display: flex; /* Garante que o menu desktop volte a ser exibido */
+        align-items: center;
+    }
+    
+    /* Esconde o menu mobile */
+    .menu-mobile {
+        display: none;
+    }
+    
+    /* Conteúdo (Desktop: Alinhamento à esquerda) */
+    /* Para listas e parágrafos, volta ao alinhamento à esquerda no desktop para melhor leitura */
+    .page-internal-content p, .page-internal-content ul {
+        text-align: left;
+    }
+    
+    /* Container (Desktop: Padding Padrão) */
+    /* Volta o padding lateral do container para o padrão (20px) no desktop */
+    .container {
+        padding: 0 20px; 
+    }
+    
+    /* Botões Fixos (Desktop: Lado a lado) */
+    /* Desktop: Coloca os botões lado a lado no container fixo */
+    .fixed-actions {
+        flex-direction: row; 
+        right: 30px;
+        bottom: 30px;
+    }
+}
+
+
+/* ---------------------------------------------------- */
+/* --- 11. MEDIA QUERIES (MOBILE E TABLET) --- */
+/* ---------------------------------------------------- */
+
+/* AJUSTES GERAIS PARA TABLETS E DISPOSITIVOS MENORES (ATÉ 768PX) */
+@media (max-width: 768px) {
+    /* AJUSTES DE TAMANHO GERAL */
+    .navbar {
+        padding: 8px 15px; /* Reduz o padding vertical do navbar */
+    }
+
+    .logo-img {
+        height: 40px; 
+    }
+    
+    .title-section {
+        font-size: 3rem;
+    }
+
+    /* CONTEÚDO E PADDING */
+    /* Corrige o Overlap do Conteúdo */
+    .page-internal-content {
+        padding-top: 110px; 
+        padding-bottom: 80px;
+        /* Garante que o texto da página interna fique centralizado em mobile/tablet */
+        text-align: center;
+    }
+    
+    /* Alinhamento de Listas e Parágrafos (Tablet) */
+    /* Para listas e parágrafos dentro de seções, força o alinhamento à esquerda em mobile para melhor leitura. */
+    section p, section ul {
+        text-align: left;
+    }
+    section ul {
+        /* Ajusta a margem para a lista ficar alinhada dentro do container */
+        margin: 20px auto 20px auto; 
+        max-width: 600px;
+    }
+    
+    /* AJUSTE PARA MAIOR ESPAÇAMENTO LATERAL (Tablet) */
+    .container {
+        padding: 0 40px; 
+    }
+
+    /* AJUSTE DE BOTÕES */
+    /* Ajuste do botão CTA em Tablets */
+    .btn-cta-grande {
+        font-size: 1.15rem; /* Levemente menor que o desktop */
+        padding: 10px 20px;
+    }
+
+    /* GALERIA E FOOTER */
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Volta para 1 coluna */
+    }
+    
+    /* FOOTER MOBILE FIX: Volta para 1 coluna e centraliza */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .social-link {
+        text-align: center;
+        padding-left: 0;
+    }
+}
+
+
+/* AJUSTES ESPECÍFICOS PARA MOBILE PEQUENO (ATÉ 480PX) */
+@media (max-width: 480px) {
+    /* Reduz o padding para ganhar mais espaço vertical */
+    .page-internal-content {
+        padding-bottom: 50px;
+    }
+    
+    /* AJUSTE PARA MAIOR ESPAÇAMENTO LATERAL (Mobile Pequeno) */
+    .container {
+        padding: 0 20px; 
+    }
+    
+    /* AJUSTE DE BOTÕES */
+    /* Ajuste do botão CTA em Mobile Pequeno */
+    .btn-cta-grande {
+        font-size: 1rem; /* Tamanho compacto */
+        padding: 8px 15px;
+    }
+
+
+    /* Reduz o tamanho da fonte dos títulos para caber melhor */
+    .title-section {
+        font-size: 2.5rem;
+    }
+    .title-section-sub {
+        font-size: 1.8rem;
+    }
+
+    /* Reduz o tamanho dos botões fixos */
+    .action-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+    
+    /* Na tela pequena, alinha à direita e empilha melhor */
+    .fixed-actions {
+        bottom: 15px;
+        right: 15px;
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* OTIMIZAÇÃO DA TABELA PARA MOBILE (TÉCNICA DE CARTÕES) */
+@media (max-width: 600px) {
+    .comparison-table {
+        border: none;
+        padding: 0;
+    }
+
+    .comparison-table thead {
+        display: none;
+    }
+    /* Cada linha (TR) vira um "cartão" de comparação, empilhando verticalmente. */
+    .comparison-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #000000; 
+        display: block; 
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    /* Define a célula (TD) como um bloco, usando a técnica de 'rótulo-e-valor' */
+    .comparison-table td {
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        /* Ajuste fino da largura para o rótulo */
+        padding-left: 55%; 
+        background-color: #000000; 
+        text-align: left; 
+        display: block; 
+    }
+    
+    /* Estilo específico para a primeira célula (Aspecto), que deve agir como título da seção */
+    .comparison-table tr td:first-child {
+        background-color: #585858;
+        color: var(--cor-texto-principal); 
+        font-weight: bold;
+        font-size: 1.1em;
+        text-align: center;
+        padding: 15px 10px;
+    }
+    
+    /* Estiliza o rótulo lateral como um retângulo Cinza para corresponder ao TH desktop */
+    .comparison-table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        /* Ajuste fino da largura do rótulo */
+        width: 50%; 
+        padding: 12px 0 12px 15px; 
+        background-color: #000000; 
+        font-weight: bold;
+        text-align: left;
+        color: var(--cor-texto-principal); 
+        height: 100%;
+        top: 0;
+        border-right: none; 
+    
+    }
+    /* Remove o rótulo duplicado na célula Aspecto (porque ela já é o título) */
+    .comparison-table tr td:first-child::before {
+        content: none;
+    }
+}
