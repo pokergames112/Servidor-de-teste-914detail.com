@@ -2,13 +2,6 @@
 <html lang="pt-br">
 
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17614495292"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-17614495292');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,22 +9,35 @@
     <meta name="description" content="Descubra como o polimento técnico da 914 Detail devolve o brilho original do seu carro com segurança e qualidade premium. Agende sua avaliação na Zona Norte de SP!">
     <meta name="keywords" content="polimento técnico automotivo, correção de pintura, brilho automotivo, estética automotiva, detailer profissional, carro zero">
 
+    <link rel="preload" href="https://fonts.gstatic.com/s/bebasneue/v10/JTUSjIg1_i6t8kCHKm7_zF0p5-c.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v25/JTUSjIg1_i6t8kCHKm7_zF0p5-e.woff2" as="font" type="font/woff2" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
 <body>
     <header class="header">
         <div class="container navbar">
-            <a href="../index.html" class="logo-link">
+            <a href="../index.html" class="logo-link" aria-label="Voltar à página inicial da 914 Detail">
                 <img src="../image/logo.png" alt="914 Detail Logo" class="logo-img">
             </a>
-            <nav>
+            <button class="hamburger-btn" aria-expanded="false" aria-controls="menu-mobile-nav">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            
+            <nav class="menu-desktop">
                 <a href="../index.html#servicos" class="btn btn-secundario">Nossos Serviços</a>
-                <a href="#" class="btn btn-secundario">Polimento</a> <a href="https://wa.me/5511966727995" target="_self" class="btn btn-primario">WhatsApp</a>
+                <a href="#o-que-e" class="btn btn-secundario">Polimento</a> <a href="https://wa.me/5511966727995" target="_blank" rel="noopener noreferrer" class="btn btn-primario">WhatsApp</a>
+            </nav>
+            
+            <nav class="menu-mobile" id="menu-mobile-nav">
+                <a href="../index.html#servicos">Nossos Serviços</a>
+                <a href="#o-que-e">Polimento</a> <a href="https://wa.me/5511966727995" target="_blank" rel="noopener noreferrer" class="btn btn-primario">Fale no WhatsApp</a>
             </nav>
         </div>
     </header>
@@ -39,25 +45,8 @@
     <main class="page-internal-content">
         <div class="container">
             
-            <h1 class="title-section" style="text-align: center;">POLIMENTO TÉCNICO: O SEGREDO PARA DEVOLVER O <span class="text-roxo">BRILHO ORIGINAL</span></h1>
+            <h1 class="title-section">Polimento técnico: o segredo para devolver o brilho original</span></h1>
             
-            <h2 class="title-section-sub">Veja o resultado na prática</h2>
-                <div class="video-container">
-                    <video 
-                        width="100%" 
-                        height="auto" 
-                        src="img polimento/Brilho vídeo instagram.mp4"
-                        poster="../img polimento/thumbnail-video.jpg"
-                        controls 
-                        playsinline 
-                        muted 
-                        loop
-                        autoplay  >
-                        Seu navegador não suporta a tag de vídeo.
-                    </video>
-                </div>
-
-
             <section id="o-que-e" style="margin-bottom: 40px;">
                 <h2>O que é o Polimento Técnico Automotivo?</h2>
                 <p>O polimento técnico é um processo de correção controlada da pintura que remove riscos superficiais, microarranhões e imperfeições causadas por lavagens incorretas, exposição ao sol e desgaste natural. Diferente do polimento comum que apenas “mascara” os defeitos, o técnico utiliza equipamentos específicos, boinas de corte e refino, e compostos profissionais para restaurar a pintura de forma precisa e segura.</p>
@@ -65,11 +54,11 @@
             </section>
 
             <section id="diferencial" style="margin-bottom: 40px;">
-                <h2 class="text-roxo">Por que escolher o Polimento da 914 Detail?</h2>
+                <h2><span class="text-roxo">Por que escolher o Polimento da 914 Detail?</span></h2>
                 <p>A 914 Detail se diferencia por aplicar um padrão de estética automotiva premium, utilizando apenas equipamentos profissionais, iluminação controlada e produtos de alto desempenho. Cada veículo é tratado de forma individual, respeitando a espessura da pintura, o tipo de verniz e o histórico do carro.</p>
                 
                 <div style="margin-top: 20px;">
-                    <ul style="list-style: disc; margin-left: 20px;">
+                    <ul> 
                         <li>Avaliação técnica gratuita antes do serviço;</li>
                         <li>Equipamentos de medição de espessura de verniz (glossmeter);</li>
                         <li>Ambiente controlado e iluminação adequada;</li>
@@ -81,8 +70,7 @@
             
             
             <h2 class="title-section-sub">Polimento Técnico vs Polimento Comum: Entenda a Diferença</h2>
-            <div style="overflow-x: auto;">
-                <table class="comparison-table">
+            <div class="responsive-table-wrapper" style="overflow-x: auto;"> <table class="comparison-table">
                     <thead>
                         <tr>
                             <th>Aspecto</th>
@@ -124,22 +112,21 @@
                 <h2 class="title-section-sub">Nossos Resultados</h2>
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="img polimento/imagem-polimento.webp" alt="Carro antes e depois do polimento técnico">
+                        <img src="img polimento/imagem-polimento.webp" alt="Carro antes e depois do polimento técnico" loading="lazy">
                     </div>
                     <div class="gallery-item">
-                        <img src="img polimento/Imagem-polimento-2.webp" alt="Detalhe do polimento na pintura do carro">
+                        <img src="img polimento/Imagem-polimento-2.webp" alt="Detalhe do polimento na pintura do carro" loading="lazy">
                     </div>
                     <div class="gallery-item">
-                        <img src="img polimento/Imagem-polimento-3.webp" alt="Carro finalizado com brilho espelhado">
+                        <img src="img polimento/Imagem-polimento-3.webp" alt="Carro finalizado com brilho espelhado" loading="lazy">
                     </div>
                 </div>
             </section>
 
 
-            <section style="margin-bottom: 40px;">
-                <h2 class="text-roxo">Benefícios Reais</h2>
+            <section id="beneficios" style="margin-bottom: 40px;"> <h2><span class="text-roxo">Benefícios Reais</span></h2>
                 <div style="margin-top: 20px;">
-                    <ul style="list-style: disc; margin-left: 20px;">
+                    <ul> 
                         <li>Remove 100% dos riscos e imperfeições superficiais;</li>
                         <li>Aumenta o valor de revenda do veículo;</li>
                         <li>Protege a pintura contra desgaste futuro (com aplicação de cera ou selante);</li>
@@ -148,8 +135,8 @@
                 </div>
             </section>
 
-            <section style="text-align: center; padding: 20px 0;">
-                <a href="https://wa.me/5511966727995" target="_self" class="btn btn-primario btn-cta-grande">
+            <section id="cta-agendamento" style="text-align: center; padding: 20px 0;">
+                <a href="https://wa.me/5511966727995" target="_blank" rel="noopener noreferrer" class="btn btn-primario btn-cta-grande">
                     AGENDE SUA AVALIAÇÃO TÉCNICA GRATUITA!
                 </a>
                 <p style="margin-top: 15px; font-size: 1.1rem;">Restaure a beleza e a proteção do seu carro hoje mesmo.</p>
@@ -171,18 +158,18 @@
                 <ul>
                     <li><a href="../index.html#servicos">Nossos Serviços</a></li>
                     <li><a href="#resultados">Resultados</a></li>
-                    <li><a href="https://wa.me/5511966727995" target="_self">Orçamento</a></li>
+                    <li><a href="https://wa.me/5511966727995" target="_blank" rel="noopener noreferrer">Orçamento</a></li>
                 </ul>
             </div>
 
             <div class="footer-section footer-social">
                 <h3>Siga-nos</h3>
                 <div class="social-icons">
-                    <a href="https://wa.me/5511966727995" target="_self" class="social-link">
+                    <a href="https://wa.me/5511966727995" target="_blank" rel="noopener noreferrer" class="social-link">
                         <img src="../image/Whatsapp logo.png" alt="WhatsApp" class="icon">
                         WhatsApp (11) 96672-7995
                     </a>
-                    <a href="https://www.instagram.com/914_detail/" target="_blank" class="social-link">
+                    <a href="https://www.instagram.com/914_detail/" target="_blank" rel="noopener noreferrer" class="social-link">
                         <img src="../image/Instagram Logo.png" alt="Instagram" class="icon">
                         914_detail
                     </a>
@@ -190,21 +177,28 @@
             </div>
 
             <div class="footer-copyright">
-                <p>&copy; 2025 914 Detail. Todos os direitos reservados.</p>
-            </div>
+                <p>&copy; <span id="current-year">2025</span> 914 Detail. Todos os direitos reservados.</p> </div>
 
         </div>
     </footer>
 
     <div class="fixed-actions">
-        <a href="../index.html" id="backToMainBtn" class="action-btn" title="Voltar à Página Principal">
+        <a href="../index.html" id="backToMainBtn" class="action-btn" title="Voltar à Página Principal" aria-label="Voltar à Página Principal">
             <i class="fas fa-home"></i>
         </a>
-        <button id="scrollToTopBtn" class="action-btn" title="Voltar ao Topo">
+        <button id="scrollToTopBtn" class="action-btn" title="Voltar ao Topo" aria-label="Voltar ao Topo">
             <i class="fas fa-arrow-up"></i>
         </button>
     </div>
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17614495292"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-17614495292');
+    </script>
+    
     <script src="script.js"></script>
 </body>
 
