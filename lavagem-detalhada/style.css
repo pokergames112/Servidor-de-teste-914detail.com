@@ -178,10 +178,11 @@ h2 {
 }
 .gallery-item img {
     width: 100%;
-    height: auto;
+    height: 300px;
     display: block;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    object-fit: cover;
 }
 
 /* --- 7. TABELA DE COMPARAÇÃO (Dark Mode - Estilos Base) --- */
@@ -208,6 +209,40 @@ h2 {
     text-transform: none; /* REMOVIDO: Era uppercase */
     font-weight: 700; /* NOVO: Adiciona negrito para destaque */
     font-size: 1.1rem;
+}
+
+#beneficios {
+    /* O valor de 60px é um bom ponto de partida para separar visualmente */
+    margin-top: 60px; 
+    margin-bottom: 40px; /* Mantendo o espaçamento inferior que você já tinha */
+}
+
+/* Adicione esta regra no seu style.css */
+#beneficios h2 {
+    margin-top: 40px; /* Adiciona espaçamento acima do título */
+    margin-bottom: 20px; /* Adiciona espaçamento abaixo do título, se necessário */
+    text-align: center; /* Mantém a centralização que você solicitou antes */
+}
+
+#beneficios ul {
+    /* Centraliza o bloco da lista (UL) no container */
+    list-style-position: inside; /* Opcional: Traz os bullets para dentro do UL */
+    text-align: left; /* Garante que os LIs fiquem alinhados à esquerda dentro do UL */
+    display: inline-block; /* Faz com que o UL se comporte como um bloco com largura ajustada ao conteúdo */
+}
+
+/* Adicione esta regra ao seu style.css */
+#cta-agendamento {
+    text-align: center; /* Centraliza o botão e o parágrafo */
+    padding: 20px 0; /* Recria o padding inline que existia */
+}
+
+#cta-agendamento p {
+    /* Garante que o texto do parágrafo, mesmo com o margin-top inline, seja centralizado */
+    text-align: center;
+    /* Opcional, mas útil: Reseta possíveis margens laterais que poderiam empurrá-lo */
+    margin-left: auto; 
+    margin-right: auto;
 }
 
 /* --- ESTILOS PADRÃO MOBILE/BASE (ELEMENTOS ESCONDIDOS) --- */
