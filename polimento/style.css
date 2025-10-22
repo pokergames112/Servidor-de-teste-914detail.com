@@ -178,10 +178,11 @@ h2 {
 }
 .gallery-item img {
     width: 100%;
-    height: auto;
+    height: 300px;
     display: block;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    object-fit: cover;
 }
 
 /* --- 7. TABELA DE COMPARAÇÃO (Dark Mode - Estilos Base) --- */
@@ -208,6 +209,40 @@ h2 {
     text-transform: none; /* REMOVIDO: Era uppercase */
     font-weight: 700; /* NOVO: Adiciona negrito para destaque */
     font-size: 1.1rem;
+}
+
+#beneficios {
+    /* O valor de 60px é um bom ponto de partida para separar visualmente */
+    margin-top: 60px; 
+    margin-bottom: 40px; /* Mantendo o espaçamento inferior que você já tinha */
+}
+
+/* Adicione esta regra no seu style.css */
+#beneficios h2 {
+    margin-top: 40px; /* Adiciona espaçamento acima do título */
+    margin-bottom: 20px; /* Adiciona espaçamento abaixo do título, se necessário */
+    text-align: center; /* Mantém a centralização que você solicitou antes */
+}
+
+#beneficios ul {
+    /* Centraliza o bloco da lista (UL) no container */
+    list-style-position: inside; /* Opcional: Traz os bullets para dentro do UL */
+    text-align: left; /* Garante que os LIs fiquem alinhados à esquerda dentro do UL */
+    display: inline-block; /* Faz com que o UL se comporte como um bloco com largura ajustada ao conteúdo */
+}
+
+/* Adicione esta regra ao seu style.css */
+#cta-agendamento {
+    text-align: center; /* Centraliza o botão e o parágrafo */
+    padding: 20px 0; /* Recria o padding inline que existia */
+}
+
+#cta-agendamento p {
+    /* Garante que o texto do parágrafo, mesmo com o margin-top inline, seja centralizado */
+    text-align: center;
+    /* Opcional, mas útil: Reseta possíveis margens laterais que poderiam empurrá-lo */
+    margin-left: auto; 
+    margin-right: auto;
 }
 
 /* --- ESTILOS PADRÃO MOBILE/BASE (ELEMENTOS ESCONDIDOS) --- */
@@ -279,6 +314,11 @@ h2 {
     font-size: 1.1rem;
     text-transform: none; 
     text-align: center;
+}
+
+/* NOVO: Remove a borda inferior do link 'Vitrificação' para não conflitar com a borda do dropdown */
+.menu-mobile a[href="#o-que-e"] {
+    border-bottom: none;
 }
 
 .menu-mobile a:last-child {
@@ -388,6 +428,131 @@ h2 {
     pointer-events: all;
 }
 
+/* ---------------------------------------------------- */
+/* --- ESTILOS PARA DROPDOWN MOBILE (BLOG 914) --- */
+/* ---------------------------------------------------- */
+
+.dropdown-mobile {
+    width: 100%; 
+    text-align: center; 
+    /* Borda para separar do item anterior e do botão de WhatsApp */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-btn {
+    background: none;
+    border: none;
+    color: var(--cor-texto-principal);
+    font-size: 1.1rem;
+    padding: 15px 0;
+    width: 100%; 
+    cursor: pointer;
+    font-family: var(--montserrat);
+    font-weight: 400;
+    text-transform: none;
+    /* Transição para a seta */
+    transition: color 0.3s ease; 
+}
+
+/* Estilo para a seta */
+.dropdown-btn .fa-chevron-down {
+    margin-left: 10px;
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+/* Rotação da seta quando o dropdown está ativo */
+.dropdown-mobile.active .dropdown-btn .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Conteúdo escondido do dropdown */
+.dropdown-content-mobile {
+    display: none; 
+    padding: 10px 0; 
+    background-color: rgba(255, 255, 255, 0.05); /* Fundo sutil para os sub-links */
+}
+
+/* Exibe quando a classe 'active' está no .dropdown-mobile */
+.dropdown-mobile.active .dropdown-content-mobile {
+    display: flex; 
+    flex-direction: column; 
+}
+
+/* Links dentro do dropdown */
+.dropdown-content-mobile a {
+    /* Remove a borda inferior que o menu principal aplica a todos os <a> */
+    border-bottom: none; 
+    padding: 10px 0; 
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Estilo para separar o botão principal do WhatsApp do menu/dropdown */
+.menu-mobile a.btn-primario {
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    padding-top: 20px;
+}
+
+/* ---------------------------------------------------- */
+/* --- NOVO: ESTILOS PARA DROPDOWN DESKTOP (BLOG 914) --- */
+/* ---------------------------------------------------- */
+.dropdown-desktop {
+    position: relative;
+    display: none; /* Inicia escondido (Mobile First) */
+    margin-left: 10px; /* Alinha com os outros botões */
+}
+
+/* O botão principal já tem estilo de .btn.btn-secundario, só precisamos de ajustes */
+.dropdown-btn-desktop {
+    /* CORREÇÃO: Garante que o padding seja exatamente o mesmo do .btn (8px vertical, 15px horizontal) */
+    padding: 14px 22px; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Remove a margem do .btn, já que o espaçamento é aplicado no div pai */
+    margin-left: 0; 
+    
+    /* NOVO: Adiciona um pequeno espaço entre o texto "Blog 914" e a seta (ícone) */
+    gap: 10px; 
+
+    /* Garante que o botão tenha fundo transparente (já que é btn-secundario) */
+    background-color: transparent;
+}
+
+.dropdown-content-desktop {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    top: 100%; /* Abaixo do botão */
+    right: 0; /* Alinhado à direita do botão */
+    background-color: var(--cor-fundo-secundario);
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    border: 1px solid var(--roxo-principal);
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+    padding: 5px 0;
+}
+
+.dropdown-content-desktop a {
+    color: var(--cor-texto-principal);
+    padding: 14px 15px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.dropdown-content-desktop a:hover {
+    background-color: var(--roxo-principal);
+    color: var(--cor-texto-principal);
+}
+
 
 /* ---------------------------------------------------- */
 /* --- 10. MEDIA QUERIES (DESKTOP) --- */
@@ -432,6 +597,19 @@ h2 {
         flex-direction: row; 
         right: 30px;
         bottom: 30px;
+    }
+    
+    /* EXIBIÇÃO E ROTAÇÃO DA SETA NO DESKTOP */
+    .dropdown-desktop {
+        display: block; /* Mostra o dropdown no desktop */
+    }
+    
+    .dropdown-desktop.active .dropdown-btn-desktop .fa-chevron-down {
+        transform: rotate(180deg); /* Rotação da seta */
+    }
+    
+    .dropdown-desktop.active .dropdown-content-desktop {
+        display: block; /* Exibe o conteúdo do dropdown */
     }
 }
 
@@ -525,11 +703,11 @@ h2 {
 
 
     /* Reduz o tamanho da fonte dos títulos para caber melhor */
-    .title-section {
-        font-size: 2.5rem;
+    h2 {
+        font-size: 1.3rem;
     }
     .title-section-sub {
-        font-size: 1.8rem;
+        font-size: 1.3rem;
     }
 
     /* Reduz o tamanho dos botões fixos */

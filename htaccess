@@ -1,0 +1,3 @@
+# Redireciona /index.html para o domínio raiz
+# Isso evita conteúdo duplicado e consolida a autoridade de página
+Redirect 301 /index.html /
