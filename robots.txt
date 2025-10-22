@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /temp/
 Sitemap: https://www.914detail.com/sitemap.xml

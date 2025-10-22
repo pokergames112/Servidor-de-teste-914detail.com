@@ -265,4 +265,25 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    // --- Lazy Loading manual fallback para navegadores antigos ---
+document.addEventListener("DOMContentLoaded", function() {
+  const lazyImgs = document.querySelectorAll('img[loading="lazy"]');
+  lazyImgs.forEach(img => {
+    if ('IntersectionObserver' in window) {
+      let observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const lazyImg = entry.target;
+            lazyImg.src = lazyImg.dataset.src || lazyImg.src;
+            observer.unobserve(lazyImg);
+          }
+        });
+      });
+      observer.observe(img);
+    }
+  });
+});
+
+
 });

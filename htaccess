@@ -1,3 +1,22 @@
+# SEO: Redireciona URLs /index.html para / (evita conteúdo duplicado)
+RewriteEngine On
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^/]+/)?index\.html
+RewriteRule ^ %1 [R=301,L]
+
+# SEO: Garante HTTPS e WWW
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^www\.914detail\.com$ [NC]
+RewriteRule ^ https://www.914detail.com%{REQUEST_URI} [L,R=301]
+
+# Cache e performance
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+
 # Redireciona /index.html para o domínio raiz
 # Isso evita conteúdo duplicado e consolida a autoridade de página
 Redirect 301 /index.html /
